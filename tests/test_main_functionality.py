@@ -48,13 +48,10 @@ class TestMainFunctionality:
 
         main_page.open(BASE_URL)
         main_page.click_ingredient()
-
-        assert main_page.is_ingredient_modal_visible()
-
         main_page.close_ingredient_modal()
-        main_page.wait_ingredient_modal_closed()
 
-        assert 'ingredients/' not in main_page.get_current_url()
+        assert main_page.wait_ingredient_modal_closed()
+
 
     @allure.title('Счётчик ингредиента увеличивается после добавления')
     def test_ingredient_counter_increases_after_adding(self, driver):

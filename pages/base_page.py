@@ -36,7 +36,7 @@ class BasePage:
 
     @allure.step('Дождаться исчезновения элемента')
     def wait_for_invisible(self, locator):
-        self.wait.until(EC.invisibility_of_element_located(locator))
+        return self.wait.until(EC.invisibility_of_element_located(locator))
 
     @allure.step('Перетащить элемент')
     def drag_and_drop(self, source_locator, target_locator):

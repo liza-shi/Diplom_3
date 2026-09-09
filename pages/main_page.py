@@ -30,7 +30,7 @@ class MainPage(BasePage):
         self.click(MainPageLocators.MODAL_CLOSE_BUTTON)
 
     def wait_ingredient_modal_closed(self):
-        self.wait_for_invisible(MainPageLocators.INGREDIENT_DETAILS_MODAL)
+        return self.wait_for_invisible(MainPageLocators.INGREDIENT_DETAILS_MODAL)
 
     def get_ingredient_counter_value(self):
         elements = self.driver.find_elements(*MainPageLocators.INGREDIENT_COUNTER)

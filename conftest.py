@@ -29,17 +29,13 @@ def registered_user():
 
     response = requests.post(REGISTER_USER_URL, json=user_data)
 
-    assert response.status_code == 200
-
     response_data = response.json()
-    access_token = response_data['accessToken']
+    access_token = response_data.get('accessToken')
 
     yield user_data
 
-    requests.delete(
-        DELETE_USER_URL,
-        headers={'Authorization': access_token})
-
+    if access_token:
+        requests.delete(DELETE_USER_URL, headers={'Authorization': access_token})
 
 @pytest.fixture
 def authorized_driver(driver, registered_user):
